@@ -165,8 +165,15 @@ class Arena:
                                 elif ((self.player.state == 'UP') and (self.player.x-2, self.player.y) not in self.black_blocks):
                                     self.player.move_left()            
                         elif event.key == pygame.K_RIGHT:
-                            if (self.player.x+1, self.player.y) not in self.black_blocks:
-                                self.player.move_right()
+                            
+                            if (self.player.state == 'DS'):
+                                  if (self.player.x+2, self.player.y) not in self.black_blocks:    
+                                    self.player.move_right()
+                            elif (self.player.x+1, self.player.y) not in self.black_blocks:
+                                 if ((self.player.state == 'DF') and (self.player.x+1, self.player.y+1) not in self.black_blocks):
+                                    self.player.move_right()
+                                 elif ((self.player.state == 'UP') and (self.player.x+2, self.player.y) not in self.black_blocks):
+                                    self.player.move_right()
                         elif event.key == pygame.K_UP:
                             if (self.player.x, self.player.y-1) not in self.black_blocks:
                                 if (self.player.state == 'DF'):
